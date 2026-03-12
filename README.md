@@ -1,6 +1,6 @@
 # AI Media Project
 
-This repository contains AI-generated video content and associated processing scripts.
+This repository contains AI-generated video content.
 
 ## Directory Structure
 

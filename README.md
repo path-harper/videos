@@ -16,14 +16,14 @@ videos/
 The `videos` directory is the primary storage for video assets.
 
 ```python
-videos = ["demo.mp4"]
+videos = ["77a3d58c-c8c9-42c9-a41f-6f6729bfb1fb.mp4"]
 ```
 
 or
 
 ```json
 {
-  "videos": ["grok-imagen-demo.mp4"]
+  "videos": ["grok-video-be3bac9c-6998-44c5-ab72-b83e8e8e379b.mp4"]
 }
 ```
 

@@ -33,3 +33,26 @@ or
 1. **Raw** → Store original generated video outputs
 2. **Renders** → Process and improve videos
 3. **Final** → Polished versions ready for viewing
+
+## Automated Processing
+
+This repository uses GitHub Actions to automatically process videos on every push to the main branch.
+
+**Workflow steps:**
+1. Checkout repository
+2. Install FFmpeg and Python dependencies
+3. Process videos using FFmpeg (scale to 720p, compress, etc.)
+4. Commit and push processed videos
+
+**To trigger processing:**
+- Push to the `main` branch
+- The workflow will automatically process videos and commit the results
+
+**Manual processing:**
+```bash
+# Simple processing (copy only)
+python3 scripts/process_videos.py
+
+# FFmpeg processing (requires FFmpeg)
+python3 scripts/process_with_ffmpeg.py
+```

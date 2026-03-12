@@ -9,10 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository with LFS
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          lfs: true
           fetch-depth: 0
 
       - name: Set up Python
@@ -34,15 +35,17 @@ jobs:
         run: |
           python scripts/process_with_ffmpeg.py
 
-      - name: Commit and push changes
+      - name: Push processed videos to LFS
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git lfs track "videos/**/*.mp4"
+          git add .gitattributes
           git add videos/
           if git diff --quiet && git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "ci: process videos"
+            git commit -m "ci: process and upload videos"
             git push
           fi
         env:

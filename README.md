@@ -135,21 +135,29 @@ git lfs pull
 ## Branch Protection Configuration
 
 > [!WARNING]
-> This repository includes a `branch-protection.json` file that defines the branch protection rules for the `main` branch.
+> This repository includes a [`branch-protection.json`](branch-protection.json) file that defines the branch protection rules for the `main` branch.
 
-**Configuration file:** `branch-protection.json`
+**Configuration file:** [`branch-protection.json`](branch-protection.json)
 
 **Current rules:**
-- Requires pull request reviews (1 approval)
-- Requires status checks to pass (`process-videos` workflow)
-- Enforces linear history (no merge commits)
-- Prevents force pushes
-- Enforces rules on administrators
-- Blocks branch creation
-- Requires conversation resolution
-- Locks branch (no direct pushes)
-- Disallows fork syncing
-- Requires signed commits (disabled)
+
+| Setting | Value | Description |
+|---------|-------|-------------|
+| `required_status_checks.strict` | `true` | Status checks must pass before merging |
+| `required_status_checks.contexts` | `["process-videos"]` | Required workflow: [`process-videos`](.github/workflows/process-videos.yml) |
+| `enforce_admins.enabled` | `true` | Rules apply to administrators too |
+| `required_pull_request_reviews.required_approving_review_count` | `1` | Requires 1 approving review |
+| `required_pull_request_reviews.dismiss_stale_reviews` | `false` | Stale reviews are not dismissed |
+| `required_pull_request_reviews.require_code_owner_reviews` | `false` | Code owner reviews not required |
+| `required_pull_request_reviews.require_last_push_approval` | `false` | Last push approval not required |
+| `required_linear_history.enabled` | `true` | Enforces linear history (no merge commits) |
+| `allow_force_pushes.enabled` | `false` | Prevents force pushes |
+| `allow_deletions.enabled` | `false` | Prevents branch deletion |
+| `block_creations.enabled` | `false` | Blocks branch creation |
+| `required_conversation_resolution.enabled` | `false` | Requires conversation resolution |
+| `lock_branch.enabled` | `false` | Locks branch (no direct pushes) |
+| `allow_fork_syncing.enabled` | `false` | Disallows fork syncing |
+| `required_signatures.enabled` | `false` | Requires signed commits (disabled)
 
 ## License
 

@@ -159,6 +159,47 @@ git lfs pull
 | `allow_fork_syncing.enabled` | `false` | Disallows fork syncing |
 | `required_signatures.enabled` | `false` | Requires signed commits (disabled)
 
+## Forking Rules
+
+> [!NOTE]
+> This repository has specific rules for forking and contributing.
+
+### Forking the Repository
+
+1. **Fork** the repository to your GitHub account
+2. **Clone** your fork locally:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/videos.git
+   cd videos
+   ```
+3. **Add** the upstream repository:
+   ```bash
+   git remote add upstream https://github.com/path-harper/videos.git
+   ```
+
+### Contributing from a Fork
+
+1. Create a new branch for your changes:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+
+2. Make your changes and commit them
+
+3. Push to your fork:
+   ```bash
+   git push origin feature/your-feature
+   ```
+
+4. Create a pull request from your fork to the upstream `main` branch
+
+### Important Notes
+
+- All pull requests must pass the `process-videos` workflow
+- Requires 1 approving review from a collaborator
+- Maintains linear history (no merge commits)
+- [Git LFS](#git-lfs) is used for video files - ensure they are tracked properly
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

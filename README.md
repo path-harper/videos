@@ -39,14 +39,14 @@ or
 This repository uses GitHub Actions to automatically process videos on every push to the main branch.
 
 **Workflow steps:**
-1. Checkout repository
+1. Checkout repository with Git LFS support
 2. Install FFmpeg and Python dependencies
 3. Process videos using FFmpeg (scale to 720p, compress, etc.)
-4. Commit and push processed videos
+4. Upload processed videos to Git LFS
 
 **To trigger processing:**
 - Push to the `main` branch
-- The workflow will automatically process videos and commit the results
+- The workflow will automatically process videos and upload them to Git LFS
 
 **Manual processing:**
 ```bash
@@ -55,4 +55,19 @@ python3 scripts/process_videos.py
 
 # FFmpeg processing (requires FFmpeg)
 python3 scripts/process_with_ffmpeg.py
+```
+
+## Git LFS
+
+Videos are stored using Git LFS (Large File Storage) to handle large binary files efficiently.
+
+**Setup Git LFS:**
+```bash
+git lfs install
+git lfs track "videos/**/*.mp4"
+```
+
+**Pull videos from LFS:**
+```bash
+git lfs pull
 ```

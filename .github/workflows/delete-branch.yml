@@ -10,15 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
-      - name: Delete PR branch
+      - name: Attempt to delete PR branch
         run: |
-          echo "Deleting branch: ${{ github.event.pull_request.head.ref }}"
+          echo "Attempting to delete branch:"
+          echo "${{ github.event.pull_request.head.ref }}"
           REPO="${{ github.repository }}"
           BRANCH="${{ github.event.pull_request.head.ref }}"
           URL="https://api.github.com/repos/${REPO}/git/refs/heads/${BRANCH}"
           curl -X DELETE \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            "$URL" || echo "Branch deletion failed"
+            "$URL" 2>&1 || true
+          echo "Note: Branch deletion may require admin permissions"
+          echo "Branch can be deleted manually via GitHub web interface"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

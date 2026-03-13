@@ -173,6 +173,21 @@ git lfs pull
 **Allowed merge methods:** Squash and merge, Rebase and merge
 **Blocked merge method:** Create a merge commit
 
+### Delete Branch Workflow
+
+> [!NOTE]
+> The repository includes a workflow to automatically delete PR branches after merge.
+
+**Workflow file:** [`delete-branch.yml`](.github/workflows/delete-branch.yml)
+
+| Setting | Value | Description |
+|---------|-------|-------------|
+| Trigger | `pull_request` types: `[closed]` | Runs when PR is closed |
+| Condition | `github.event.pull_request.merged == true` | Only runs if PR was merged |
+| Action | Deletes PR branch via GitHub API | Cleans up merged branches |
+
+**Note:** If branch deletion fails due to permissions, branches can be deleted manually via GitHub web interface.
+
 ## Forking Rules
 
 > [!NOTE]

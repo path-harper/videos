@@ -12,8 +12,13 @@ jobs:
     steps:
       - name: Delete PR branch
         run: |
+          echo "Deleting branch: ${{ github.event.pull_request.head.ref }}"
           REPO="${{ github.repository }}"
           BRANCH="${{ github.event.pull_request.head.ref }}"
-          gh api -X DELETE "repos/${REPO}/git/refs/heads/${BRANCH}"
+          URL="https://api.github.com/repos/${REPO}/git/refs/heads/${BRANCH}"
+          curl -X DELETE \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "$URL" || echo "Branch deletion failed"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -12,8 +12,12 @@
       "require_code_owner_reviews": false
     },
     "restrictions": null,
-    "required_linear_history": true,
-    "allow_force_pushes": false,
+    "required_linear_history": {
+      "enabled": true
+    },
+    "allow_force_pushes": {
+      "enabled": false
+    },
     "allow_deletions": false
   }
 }

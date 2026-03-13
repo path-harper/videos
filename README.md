@@ -114,6 +114,6 @@ This repository includes a `branch-protection.json` file that defines the branch
 **Current rules:**
 - Requires pull request reviews (1 approval)
 - Requires status checks to pass (`process-videos` workflow)
-- Enforces linear history
+- Enforces linear history (no merge commits)
 - Prevents force pushes
 - Enforces rules on administrators

@@ -159,6 +159,18 @@ git lfs pull
 | `allow_fork_syncing.enabled` | `false` | Disallows fork syncing |
 | `required_signatures.enabled` | `false` | Requires signed commits (disabled)
 
+### Merge Rules
+
+> [!TIP]
+> The `required_linear_history` rule affects how pull requests can be merged.
+
+| Allowed Merge Methods | Blocked Merge Methods |
+|----------------------|----------------------|
+| ✅ Squash and merge | ❌ Create a merge commit |
+| ✅ Rebase and merge | |
+
+**Why?** The `required_linear_history.enabled = true` setting prevents merge commits to maintain a clean, linear Git history.
+
 ## Forking Rules
 
 > [!NOTE]

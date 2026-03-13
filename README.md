@@ -1,12 +1,16 @@
 # AI Media Project
 
-This repository contains AI-generated video content organized by workflow stage.
+> [!NOTE]
+> This repository contains AI-generated video content organized by workflow stage.
 
 ## Summary
 
-The GitHub Actions workflow is now fully configured and working. Here's what's been set up:
+> [!IMPORTANT]
+> The GitHub Actions workflow is now fully configured and working. Here's what's been set up:
 
-### **Repository Structure**
+<details>
+<summary><b>Repository Structure</b></summary>
+
 ```
 videos/
  ├─ raw/          # Original generated output (3 MP4 files)
@@ -14,7 +18,11 @@ videos/
  └─ final/        # Final processed videos (3 MP4 files)
 ```
 
-### **GitHub Actions Workflow** (`.github/workflows/process-videos.yml`)
+</details>
+
+<details>
+<summary><b>GitHub Actions Workflow</b> (<code>.github/workflows/process-videos.yml</code>)</summary>
+
 - **Trigger**: Runs on every push to `main` branch
 - **Permissions**: Has write access to commit processed videos
 - **Steps**:
@@ -24,22 +32,36 @@ videos/
   4. Upload processed videos to Git LFS
   5. Commit and push changes
 
-### **Git LFS Configuration**
+</details>
+
+<details>
+<summary><b>Git LFS Configuration</b></summary>
+
 - All MP4 files are tracked with Git LFS
 - Videos are stored efficiently on GitHub's LFS servers
 - LFS objects are automatically uploaded during workflow execution
 
-### **Branch Protection**
+</details>
+
+<details>
+<summary><b>Branch Protection</b></summary>
+
 - **Main branch** is protected with the following rules:
   - Requires pull request reviews (1 approval)
-  - Requires status checks to pass (process-videos workflow)
+  - Requires status checks to pass (`process-videos` workflow)
   - Enforces linear history
   - Prevents force pushes
   - Administrators are also enforced
 
-### **Manual Processing Scripts**
+</details>
+
+<details>
+<summary><b>Manual Processing Scripts</b></summary>
+
 - `scripts/process_videos.py` - Simple copy processing
 - `scripts/process_with_ffmpeg.py` - FFmpeg-based processing
+
+</details>
 
 ## Directory Structure
 
@@ -55,6 +77,7 @@ videos/
 The `videos` directory is the primary storage for video assets.
 
 **Example:**
+
 ```python
 videos = ["77a3d58c-c8c9-42c9-a41f-6f6729bfb1fb.mp4"]
 ```
@@ -75,13 +98,15 @@ or
 
 ## Automated Processing
 
-This repository uses GitHub Actions to automatically process videos on every push to the main branch.
+> [!TIP]
+> This repository uses GitHub Actions to automatically process videos on every push to the main branch.
 
 **To trigger processing:**
 - Push to the `main` branch
 - The workflow will automatically process videos and upload them to Git LFS
 
 **Manual processing:**
+
 ```bash
 # Simple processing (copy only)
 python3 scripts/process_videos.py
@@ -95,19 +120,22 @@ python3 scripts/process_with_ffmpeg.py
 Videos are stored using Git LFS (Large File Storage) to handle large binary files efficiently.
 
 **Setup Git LFS:**
+
 ```bash
 git lfs install
 git lfs track "videos/**/*.mp4"
 ```
 
 **Pull videos from LFS:**
+
 ```bash
 git lfs pull
 ```
 
 ## Branch Protection Configuration
 
-This repository includes a `branch-protection.json` file that defines the branch protection rules for the `main` branch.
+> [!WARNING]
+> This repository includes a `branch-protection.json` file that defines the branch protection rules for the `main` branch.
 
 **Configuration file:** `branch-protection.json`
 

@@ -104,3 +104,16 @@ git lfs track "videos/**/*.mp4"
 ```bash
 git lfs pull
 ```
+
+## Branch Protection Configuration
+
+This repository includes a `branch-protection.json` file that defines the branch protection rules for the `main` branch.
+
+**Configuration file:** `branch-protection.json`
+
+**Current rules:**
+- Requires pull request reviews (1 approval)
+- Requires status checks to pass (`process-videos` workflow)
+- Enforces linear history
+- Prevents force pushes
+- Enforces rules on administrators

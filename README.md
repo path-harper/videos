@@ -162,14 +162,16 @@ git lfs pull
 ### Merge Rules
 
 > [!TIP]
-> The `required_linear_history` rule affects how pull requests can be merged.
+> Summary of merge rules:
 
-| Allowed Merge Methods | Blocked Merge Methods |
-|----------------------|----------------------|
-| ✅ Squash and merge | ❌ Create a merge commit |
-| ✅ Rebase and merge | |
+| Setting | Value | Effect |
+|---------|-------|--------|
+| `required_linear_history.enabled` | `true` | Blocks merge commits, allows squash/rebase |
+| `required_pull_request_reviews.required_approving_review_count` | `1` | Requires 1 approving review |
+| `required_status_checks.strict` | `true` | All status checks must pass |
 
-**Why?** The `required_linear_history.enabled = true` setting prevents merge commits to maintain a clean, linear Git history.
+**Allowed merge methods:** Squash and merge, Rebase and merge
+**Blocked merge method:** Create a merge commit
 
 ## Forking Rules
 

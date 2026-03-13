@@ -145,6 +145,11 @@ git lfs pull
 - Enforces linear history (no merge commits)
 - Prevents force pushes
 - Enforces rules on administrators
+- Blocks branch creation
+- Requires conversation resolution
+- Locks branch (no direct pushes)
+- Disallows fork syncing
+- Requires signed commits (disabled)
 
 ## License
 

@@ -1,8 +1,10 @@
+---
 name: Process Videos
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   process-videos:
@@ -40,15 +42,16 @@ jobs:
       - name: Push processed videos to LFS
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
+          git config --global user.email \
+            'github-actions[bot]@users.noreply.github.com'
+
           # Ensure LFS is tracking MP4 files
           git lfs track "videos/**/*.mp4"
           git add .gitattributes
-          
+
           # Add all video files
           git add videos/
-          
+
           # Check if there are changes
           if git diff --quiet && git diff --staged --quiet; then
             echo "No changes to commit"

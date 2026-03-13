@@ -29,6 +29,14 @@ videos/
 - Videos are stored efficiently on GitHub's LFS servers
 - LFS objects are automatically uploaded during workflow execution
 
+### **Branch Protection**
+- **Main branch** is protected with the following rules:
+  - Requires pull request reviews (1 approval)
+  - Requires status checks to pass (process-videos workflow)
+  - Enforces linear history
+  - Prevents force pushes
+  - Administrators are also enforced
+
 ### **Manual Processing Scripts**
 - `scripts/process_videos.py` - Simple copy processing
 - `scripts/process_with_ffmpeg.py` - FFmpeg-based processing
